@@ -1,7 +1,9 @@
 import openai
-
-openai.api_key = "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"
-
+import os
+import re
+openai.api_key=os.getenv("OPEN_API_KEY")
+if openai.api_key is None:
+    raise ValueError("OPENAI_API_KEY environment variable not set")
 def evaluate_code(code_snippet, skill_name):
     
     prompt = f"""
@@ -13,20 +15,21 @@ def evaluate_code(code_snippet, skill_name):
     {code_snippet}
     """
 
-    response = openai.ChatCompletion.create(
-        model="gpt-4o",
-        messages=[
-            {"role": "system", "content": "You are an expert code reviewer."},
-            {"role": "user", "content": prompt}
-        ],
-        temperature=0
-    )
-
-    evaluation_text = response['choices'][0]['message']['content']
-
-    
-    import re
-    match = re.search(r'(\d{1,3})', evaluation_text)
-    score = int(match.group(1)) if match else 0
-
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You are an expert code reviewer."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0
+        )
+        evaluation_text = response['choices'][0]['message']['content']
+        match = re.search(r'(\d{1,3})', evaluation_text)
+        score = int(match.group(1)) if match else 0
+    except Exception as e:
+        print(f"Error evaluating code: {e}")
+        score = 0
+        evaluation_text = ""
     return score, evaluation_text
+
