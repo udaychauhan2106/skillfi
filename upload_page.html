@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi | Upload Skills & Projects</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="relative min-h-screen text-gray-800 overflow-hidden transition-colors duration-500" id="body">
+
+  <!-- 🔹 Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');">
+  </div>
+
+  <!-- 🔹 Overlay -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- 🔹 Main Content -->
+  <div class="relative z-10">
+    <!-- Header -->
+    <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
+
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="#about" class="hover:text-blue-400">&lt;About Us&gt;</a>
+        <a href="#services" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="#contact" class="hover:text-blue-400">&lt;Contact Us&gt;</a>
+        <a href="#signup" class="hover:text-blue-400">&lt;Sign Up&gt;</a>
+      </nav>
+      <p>"     "</p>
+      <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- 🔹 Upload Section -->
+    <main class="flex flex-col md:flex-row items-center justify-center gap-10 px-6 py-16">
+      
+      <!-- Upload Skill -->
+      <div class="bg-white/20 backdrop-blur-lg shadow-2xl p-8 rounded-2xl w-full md:w-2/5 h-[600px] text-white">
+        <h2 class="text-5xl font-semibold mb-4 text-center">Upload Your Skill</h2>
+        <p class="text-lg mb-6 text-gray-200 text-center">
+          Enter the skill you've learned and want to showcase.
+        </p><br>
+        <textarea 
+          rows="8"
+          placeholder="Describe your skill here... (e.g., Python, React, HTML, etc.)" 
+          class="w-full p-5 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-5 resize-none"
+        ></textarea>
+        <button class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-semibold transition mb-5">
+          Save Skill
+        </button>
+      </div>
+
+      <!-- Upload Project -->
+      <div class="bg-white/20 backdrop-blur-lg shadow-2xl p-8 rounded-2xl w-full md:w-3/5 h-[600px] text-white">
+        <h2 class="text-3xl font-semibold mb-4 text-center">Upload Your Project</h2>
+        <p class="text-lg mb-6 text-gray-200 text-center">
+          Show your work! Upload your project files or paste your GitHub repository link.
+        </p>
+
+        <div class="mb-4">
+          <label class="block mb-2 text-gray-300">Upload Project Files:</label>
+          <input 
+            type="file" 
+            class="block w-full text-gray-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label class="block mb-2 text-gray-300">GitHub Repository Link:</label>
+          <input 
+            type="text" 
+            placeholder="Paste your GitHub repository link here..."
+            class="w-full p-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+
+        <button class="w-full bg-green-600 hover:bg-green-500 text-white py-3 rounded-lg font-semibold transition mb-5">
+          Upload Project
+        </button>
+      </div>
+
+    </main>
+
+    <!-- 🔹 Go to Test Button -->
+    <div class="flex justify-center pb-16">
+      <button onclick="goToTest()" class="bg-purple-600 hover:bg-purple-500 text-white py-4 px-10 rounded-full font-bold text-xl shadow-lg transition">
+        Go to Test
+      </button>
+    </div>
+  </div>
+
+  <!-- 🔹 Sidebar -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition">
+          <i class="fa-solid fa-pen"></i> Edit Profile
+        </a>
+
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition">
+          <i class="fa-solid fa-lightbulb"></i> My Skills
+        </a>
+
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition">
+          <i class="fa-solid fa-medal"></i> My Badges
+        </a>
+
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left">
+          <i class="fa-solid fa-bell"></i> Notification Preferences
+        </button>
+
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left">
+          <i class="fa-solid fa-circle-question"></i> Help & Support
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 JS -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help.html";
+    }
+
+    function goToTest() {
+      alert("Redirecting to Skill Test...");
+      window.location.href = "test_rules.html";
+    }
+  </script>
+
+</body>
+</html>

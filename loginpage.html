@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi - Login / Signup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    #nameField {
+      max-height: none; /* Always visible */
+      overflow: visible;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen flex flex-col items-center justify-start bg-gray-900 overflow-hidden">
+
+  <!-- Background Image + Overlay -->
+  <div class="absolute inset-0 bg-cover bg-center" 
+       style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');">
+  </div>
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Header / Navbar -->
+  <header class="relative z-20 flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm w-full">
+    <!-- Logo -->
+    <div>
+      <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+    </div>
+    <!-- Navigation -->
+    <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+      <a href="#about" class="hover:text-blue-400">&lt;About Us&gt;</a>
+      <a href="#services" class="hover:text-blue-400">&lt;Services&gt;</a>
+      <a href="#contact" class="hover:text-blue-400">&lt;Contact Us&gt;</a>
+      <a href="#signup" class="hover:text-blue-400">&lt;Sign Up&gt;</a>
+    </nav>
+  </header>
+
+  <!-- Glass Container -->
+  <div class="relative z-10 mt-20 w-[700px] bg-white/15 backdrop-blur-lg rounded-xl shadow-lg p-10 flex flex-col gap-6 transition-all">
+    
+    <!-- Title -->
+    <h1 id="title" class="text-2xl text-white text-center font-semibold">Login</h1>
+
+    <!-- Form -->
+    <form class="flex flex-col gap-4">
+      <!-- Name Field -->
+      <div id="nameField">
+        <div class="flex items-center gap-3 bg-white/20 rounded-lg p-3">
+          <i class="fa-solid fa-user text-white"></i>
+          <input type="text" placeholder="Name" class="bg-transparent outline-none w-full text-white placeholder-gray-300">
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="flex items-center gap-3 bg-white/20 rounded-lg p-3">
+        <i class="fa-solid fa-envelope text-white"></i>
+        <input type="email" placeholder="Email" class="bg-transparent outline-none w-full text-white placeholder-gray-300">
+      </div>
+
+      <!-- Password Field -->
+      <div class="flex items-center gap-3 bg-white/20 rounded-lg p-3">
+        <i class="fa-solid fa-lock text-white"></i>
+        <input type="password" placeholder="Password" class="bg-transparent outline-none w-full text-white placeholder-gray-300">
+      </div>
+
+      <!-- Forgot password -->
+      <p class="text-right text-sm text-white">Forgot password? <a href="#" class="text-cyan-400 hover:underline">Click Here!</a></p>
+
+      <!-- Buttons -->
+      <div class="flex justify-between mt-4 gap-4">
+        <a href="get_your_skills.html" class="w-1/2 bg-cyan-400 text-white font-semibold py-2 rounded-lg text-center hover:bg-cyan-500 transition-colors duration-300 cursor-pointer">
+          Sign Up
+        </a>
+        <a href="get_your_skills.html" class="w-1/2 bg-cyan-400 text-white font-semibold py-2 rounded-lg text-center hover:bg-cyan-500 transition-colors duration-300 cursor-pointer">
+          Login
+        </a>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

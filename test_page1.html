@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillFi | Automated AI Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="relative min-h-screen text-white overflow-hidden">
+
+  <!-- Background -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');"></div>
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Navigation -->
+  <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm relative z-10">
+    <div>
+      <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+    </div>
+    <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+      <a href="#about" class="hover:text-blue-400">&lt;About Us&gt;</a>
+      <a href="#services" class="hover:text-blue-400">&lt;Services&gt;</a>
+      <a href="#contact" class="hover:text-blue-400">&lt;Contact Us&gt;</a>
+      <a href="#signup" class="hover:text-blue-400">&lt;Sign Up&gt;</a>
+    </nav>
+     <p>     </p>
+    <div class="flex items-center">
+      <div class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition">
+        <i class="fa-solid fa-user text-xl"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Test Slide -->
+  <div class="relative z-10 flex flex-col h-screen">
+    
+    <!-- Question Area (Top 30% of screen) -->
+    <div class="h-[20vh] p-6 text-white text-xl md:text-2xl text-left font-semibold border-b border-white/30 flex flex-col justify-center">
+      <div id="aiQuestion" class="h-full flex items-center justify-center text-center px-4">
+        Test starting soon...
+      </div>
+      <div id="notification" class="text-blue-300 mt-2 text-center"></div>
+    </div>
+
+    <!-- Webcam Area (Bottom 70%) -->
+    <div class="flex-1 flex flex-col items-center justify-center p-6 space-y-2">
+      <video id="webcam" autoplay muted class="w-[600px] md:w-[600px] border-4 border-white rounded-xl shadow-lg"></video>
+
+      <!-- End Test Button (Initially Disabled) -->
+      <button id="endTestBtn" class="mt-4 px-6 py-3 bg-gray-500 rounded-xl text-white font-semibold cursor-not-allowed" disabled>
+        End Test
+      </button>
+
+      <p id="recordStatus" class="text-white/70 mt-2"></p>
+    </div>
+
+  </div>
+
+  <script>
+    // Webcam + MediaRecorder setup
+    const video = document.getElementById('webcam');
+    let mediaRecorder, recordedChunks = [];
+
+    async function initWebcam() {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+      video.srcObject = stream;
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => {
+        if (e.data.size > 0) recordedChunks.push(e.data);
+      };
+      mediaRecorder.onstop = saveRecording;
+    }
+    initWebcam();
+
+    function saveRecording() {
+      const blob = new Blob(recordedChunks, { type: 'video/webm' });
+      const url = URL.createObjectURL(blob);
+      console.log("Video recorded:", url); // replace with server upload
+    }
+
+    // Questions (replace this with backend AI fetch)
+    const questions = [
+      "Explain a time when you solved a complex problem.",
+      "Describe your favorite project and why it was successful.",
+      "How do you handle tight deadlines?",
+      "Explain a technical concept you recently learned.",
+      "Describe a situation where you demonstrated leadership."
+    ];
+
+    let currentQuestion = 0;
+
+    function startNextQuestion() {
+      if (currentQuestion >= questions.length) {
+        document.getElementById('notification').innerText = "All questions completed!";
+        const endBtn = document.getElementById('endTestBtn');
+        endBtn.disabled = false;
+        endBtn.classList.remove("bg-gray-500","cursor-not-allowed");
+        endBtn.classList.add("bg-blue-600","hover:bg-blue-700");
+        return;
+      }
+
+      // Show question
+      document.getElementById('aiQuestion').innerText = questions[currentQuestion];
+      document.getElementById('notification').innerText = "Recording in progress...";
+
+      recordedChunks = [];
+      mediaRecorder.start();
+
+      // Auto-stop after 60 sec
+      setTimeout(() => {
+        mediaRecorder.stop();
+        document.getElementById('notification').innerText = "Recording complete. Loading next question...";
+        currentQuestion++;
+        // small delay for notification
+        setTimeout(() => startNextQuestion(), 2000);
+      }, 60000);
+    }
+
+    // Start Test automatically after webcam init
+    video.onloadedmetadata = () => {
+      startNextQuestion();
+    };
+
+    // End Test Button
+    document.getElementById('endTestBtn').addEventListener('click', () => {
+      alert("Test completed! Submitting your answers...");
+      window.location.href = "submit_test.html"; // replace with actual submission page
+    });
+  </script>
+
+</body>
+</html>
+
