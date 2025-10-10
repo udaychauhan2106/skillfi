@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi | Badge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="relative min-h-screen text-gray-800 overflow-hidden transition-colors duration-500" id="body">
+
+  <!-- Background -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');"></div>
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
+
+    <!-- Badge Container -->
+    <div class="bg-gradient-to-b from-purple-500 via-pink-500 to-red-500 rounded-3xl shadow-2xl flex flex-col items-center justify-between p-8 w-[450px] h-[700px] text-white">
+
+      <!-- Skill Logo -->
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JS Logo" class="w-40 h-40 rounded-full bg-white/20">
+
+      <!-- Skill Name -->
+      <h1 class="text-5xl text-center drop-shadow-lg">JavaScript</h1>
+
+      <!-- QR Code -->
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=JavaScriptBadge" alt="QR Code" class="w-50 h-50 rounded-lg bg-white/20 p-2 mt-4">
+
+      <!-- Optional: Share/Download Button -->
+      <button onclick="downloadBadge()" class="bg-white text-purple-900 font-semibold px-10 py-4 rounded-lg hover:bg-gray-100 transition shadow-md">Download Badge</button>
+    </div>
+
+  </div>
+
+  <!-- JS for download (optional, just placeholder) -->
+  <script>
+    function downloadBadge() {
+      alert("Downloading badge...");
+      // You can implement HTML2Canvas or other logic to download the badge as image
+    }
+  </script>
+
+</body>
+</html>
+

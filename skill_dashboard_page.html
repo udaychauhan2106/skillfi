@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi | Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="relative min-h-screen text-gray-800 overflow-hidden transition-colors duration-500" id="body">
+
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');"></div>
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Main Content -->
+  <div class="relative z-10">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="landing.html" class="hover:text-blue-400">&lt;About Us&gt;</a>
+        <a href="dashboard.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="score.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a>
+        <a href="#contact" class="hover:text-blue-400">&lt;Sign Up&gt;</a>
+      </nav>
+      <p>"     "</p>
+      <div class="flex items-center">
+        <div class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition" onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="pt-16 pb-12 relative z-10 px-8 md:px-16 max-h-[calc(100vh-100px)] overflow-y-auto">
+      <h1 class="text-4xl text-white font-bold mb-8 drop-shadow-lg">My Skills & Scores</h1>
+
+      <!-- Skills List -->
+      <div class="flex flex-col space-y-4">
+
+        <!-- Example Skill Card -->
+        <div class="bg-white/20 p-6 rounded-xl shadow-md flex justify-between items-center">
+          <h2 class="text-2xl font-semibold text-white">JavaScript</h2>
+          <p class="text-white/80 text-lg font-bold">90/100</p>
+        </div>
+
+        <div class="bg-white/20 p-6 rounded-xl shadow-md flex justify-between items-center">
+          <h2 class="text-2xl font-semibold text-white">Python</h2>
+          <p class="text-white/80 text-lg font-bold">85/100</p>
+        </div>
+
+        <div class="bg-white/20 p-6 rounded-xl shadow-md flex justify-between items-center">
+          <h2 class="text-2xl font-semibold text-white">React</h2>
+          <p class="text-white/80 text-lg font-bold">88/100</p>
+        </div>
+
+        <!-- Add more skills dynamically -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left"><i class="fa-solid fa-bell"></i> Notification Preferences</button>
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left"><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help.html";
+    }
+  </script>
+
+</body>
+</html>
