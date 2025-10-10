@@ -40,7 +40,7 @@ def evaluate_user_resposne(user_response ,skill_name):
     
     total_levels = sum(r['level'] for r in user_response)
     combined_score = sum(r['score'] * r['level']/total_levels for r in user_response)
-    return round(combined_score, 2)
+    return round(combined_score, 2) , user_response["evaluation_text"]
 
 
 
