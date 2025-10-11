@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi | Notification Preferences</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="relative min-h-screen bg-gray-900 text-gray-100">
+
+  <!-- Header / Navigation Bar -->
+    <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
+
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--about us added-->
+        <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a> <!--contact us added-->
+        <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>      </p>
+      </nav>
+      
+      <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
+
+  <!-- Main Content -->
+  <main class="px-8 md:px-16 py-12 max-w-3xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8 text-blue-400">Notification Preferences</h1>
+    <p class="mb-6 text-gray-300">Customize the notifications you want to receive from SkillFi. Toggle on/off the type of notifications below.</p>
+
+    <div class="space-y-6">
+      <!-- Push Notifications -->
+      <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg shadow-md">
+        <div>
+          <h2 class="text-xl font-semibold">Push Notifications</h2>
+          <p class="text-gray-400 text-sm">Receive notifications directly on your device.</p>
+        </div>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" class="sr-only peer" checked>
+          <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:bg-blue-600 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+        </label>
+      </div>
+
+      <!-- Email Notifications -->
+      <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg shadow-md">
+        <div>
+          <h2 class="text-xl font-semibold">Email Notifications</h2>
+          <p class="text-gray-400 text-sm">Get emails about updates, reminders, and offers.</p>
+        </div>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" class="sr-only peer">
+          <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:bg-blue-600 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+        </label>
+      </div>
+
+      <!-- SMS Notifications -->
+      <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg shadow-md">
+        <div>
+          <h2 class="text-xl font-semibold">SMS Notifications</h2>
+          <p class="text-gray-400 text-sm">Receive important updates via SMS.</p>
+        </div>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" class="sr-only peer" checked>
+          <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:bg-blue-600 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+        </label>
+      </div>
+
+      <!-- In-App Notifications -->
+      <div class="flex justify-between items-center bg-gray-800 p-4 rounded-lg shadow-md">
+        <div>
+          <h2 class="text-xl font-semibold">In-App Notifications</h2>
+          <p class="text-gray-400 text-sm">See alerts when you are using the app.</p>
+        </div>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" class="sr-only peer" checked>
+          <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:bg-blue-600 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-end">
+      <button onclick="savePreferences()" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition">Save Preferences</button>
+    </div>
+  </main>
+  <!-- Sidebar (Same as Landing Page) -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+        <!---edit profile page link--><a href="edit_profile.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
+        <!---my skills page link--><a href="my_skills.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
+        <!---my badges page link--><a href="my_badges.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left"><i class="fa-solid fa-bell"></i> Notification Preferences</button>
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left"><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+      </div>
+    </div>
+  </div>
+<script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help&support.html";
+    }
+  </script>
+
+  <!-- JS -->
+  <script>
+    function savePreferences() {
+      alert("Your notification preferences have been saved!");
+      window.location.href = "dashboard.html";
+    }
+  </script>
+
+</body>
+</html>

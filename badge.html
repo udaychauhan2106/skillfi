@@ -9,38 +9,107 @@
 </head>
 <body class="relative min-h-screen text-gray-800 overflow-hidden transition-colors duration-500" id="body">
 
-  <!-- Background -->
-  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');"></div>
+  <!-- 🔹 Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');">
+  </div>
+
+  <!-- 🔹 Overlay -->
   <div class="absolute inset-0 bg-black/40"></div>
 
-  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
+  <!-- 🔹 Main Content -->
+  <div class="relative z-10">
 
-    <!-- Badge Container -->
-    <div class="bg-gradient-to-b from-purple-500 via-pink-500 to-red-500 rounded-3xl shadow-2xl flex flex-col items-center justify-between p-8 w-[450px] h-[700px] text-white">
+    <!-- Header / Navigation Bar -->
+    <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
 
-      <!-- Skill Logo -->
-      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JS Logo" class="w-40 h-40 rounded-full bg-white/20">
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--about us added-->
+        <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a> <!--contact us added-->
+        <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>      </p>
+      </nav>
+      
+      <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
 
-      <!-- Skill Name -->
-      <h1 class="text-5xl text-center drop-shadow-lg">JavaScript</h1>
+    <!-- 🔹 Badge Section -->
+<main class="flex flex-col items-center justify-center px-6 py-16">
+  <div class="bg-gradient-to-b from-purple-500 via-pink-500 to-red-500 rounded-3xl shadow-2xl flex flex-col items-center justify-start p-8 w-[450px] h-[700px] text-white">
 
-      <!-- QR Code -->
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=JavaScriptBadge" alt="QR Code" class="w-50 h-50 rounded-lg bg-white/20 p-2 mt-4">
+    <!-- Skill Logo -->
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JS Logo" class="w-40 h-40 rounded-full bg-white/20 mt-5 mb-5">
 
-      <!-- Optional: Share/Download Button -->
-      <button onclick="downloadBadge()" class="bg-white text-purple-900 font-semibold px-10 py-4 rounded-lg hover:bg-gray-100 transition shadow-md">Download Badge</button>
-    </div>
+    <!-- Skill Name -->
+    <h1 class="text-5xl text-center drop-shadow-lg mb-7">JavaScript</h1>
+
+    <!-- QR Code -->
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=JavaScriptBadge" alt="QR Code" class="w-[200px] h-[200px] rounded-lg bg-white/20 p-2 mb-0">
+
+    <!-- Download Button -->
+    <button onclick="downloadBadge()" class="bg-white text-purple-900 font-semibold px-10 py-4 rounded-lg hover:bg-gray-100 transition shadow-md mt-20">
+      Download Badge
+    </button>
+  </div>
+</main>
+
 
   </div>
 
-  <!-- JS for download (optional, just placeholder) -->
+  <!-- Sidebar -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+        <a href="edit_profile.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
+        <a href="my_skills.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
+        <a href="my_badges.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left"><i class="fa-solid fa-bell"></i> Notification Preferences</button>
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left"><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
   <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help&support.html";
+    }
+
     function downloadBadge() {
       alert("Downloading badge...");
-      // You can implement HTML2Canvas or other logic to download the badge as image
+      // Implement HTML2Canvas or other logic here to download badge as image
     }
   </script>
 
 </body>
 </html>
-

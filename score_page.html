@@ -16,22 +16,23 @@
   <!-- 🔹 Main Content -->
   <div class="relative z-10">
 
-    <!-- Header (Same as Landing Page) -->
+    <!-- Header / Navigation Bar -->
     <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
       <div>
         <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
       </div>
 
-      <!-- Navigation -->
       <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
-        <a href="landing.html" class="hover:text-blue-400">&lt;About Us&gt;</a>
-        <a href="dashboard.html" class="hover:text-blue-400">&lt;Services&gt;</a>
-        <a href="score.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a>
-        <a href="#contact" class="hover:text-blue-400">&lt;Sign Up&gt;</a>
+        <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--about us added-->
+        <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a> <!--contact us added-->
+        <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>       </p>
       </nav>
-      <p>"     "</p>
+      
       <div class="flex items-center">
-        <div class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition" onclick="toggleSidebar()">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
           <i class="fa-solid fa-user text-xl"></i>
         </div>
       </div>
@@ -42,14 +43,40 @@
       <div class="bg-white/30 backdrop-blur-lg rounded-2xl shadow-2xl p-12 flex flex-col items-center space-y-8 w-[500px] h-[500px]">
 
         <!-- Score Display -->
-        <div class="text-center">
-          <h1 class="text-8xl font-bold text-white drop-shadow-lg pt-5">85/100</h1><br>
-          <p class="text-white/80 mt-2 text-5xl">Your Score</p> <br>
-        </div>
+        <!-- Score Display -->
+<div class="text-center">
+  <p id="motivation" class="text-white/90 text-2xl mt-0 mb-3"></p>
+  <h1 id="score" class="text-8xl font-bold text-white drop-shadow-lg pt-5">85/100</h1><br>
+  <p class="text-white/80 mt-2 text-3xl">Your Score</p> <br>
+</div>
+
+<script>
+  // Get the score value (extract number from "85/100")
+  const scoreElement = document.getElementById('score');
+  const scoreText = scoreElement.textContent;
+  const score = parseInt(scoreText.split('/')[0]);
+
+  const motivationElement = document.getElementById('motivation');
+  let message = '';
+
+  // Set motivational messages based on score ranges
+  if(score >= 90) {
+    message = "Outstanding! You are a superstar! 🌟";
+  } else if(score >= 75) {
+    message = "Great job, keep pushing forward! 💪";
+  } else if(score >= 50) {
+    message = "Good effort! Practice makes perfect! ✨";
+  } else {
+    message = "Don't give up! Every step counts! 🚀";
+  }
+
+  motivationElement.textContent = message;
+</script>
+
 
         <!-- Buttons -->
         <div class="flex flex-col space-y-4 w-full">
-          <a href="skill_dashboard_page.html" class="w-full text-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold shadow-md transition text-2xl">View Dashboard</a>
+          <a href="z.dashboard.html" class="w-full text-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold shadow-md transition text-2xl">View Dashboard</a>
           <button onclick="window.location.href = 'badge.html'" class="w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold shadow-md transition text-2xl">Generate Badge</button>
         </div>
 
@@ -64,9 +91,9 @@
       <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
       <div class="mt-6 space-y-6 text-lg flex-1">
         <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
-        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
-        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
-        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
+        <!---edit profile page link--><a href="edit_profile.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
+        <!---my skills page link--><a href="my_skills.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
+        <!---my badges page link--><a href="my_badges.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
         <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left"><i class="fa-solid fa-bell"></i> Notification Preferences</button>
         <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
       </div>
@@ -92,7 +119,7 @@
     }
     function openHelp() {
       alert("Redirecting to Help & Support...");
-      window.location.href = "help.html";
+      window.location.href = "help&support.html";
     }
   </script>
 

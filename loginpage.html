@@ -33,11 +33,18 @@
     </div>
     <!-- Navigation -->
     <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
-      <a href="#about" class="hover:text-blue-400">&lt;About Us&gt;</a>
-      <a href="#services" class="hover:text-blue-400">&lt;Services&gt;</a>
-      <a href="#contact" class="hover:text-blue-400">&lt;Contact Us&gt;</a>
-      <a href="#signup" class="hover:text-blue-400">&lt;Sign Up&gt;</a>
+      <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--About us page link added-->
+      <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+      <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a>
+      <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>      </p>
     </nav>
+    <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
   </header>
 
   <!-- Glass Container -->
@@ -52,20 +59,20 @@
       <div id="nameField">
         <div class="flex items-center gap-3 bg-white/20 rounded-lg p-3">
           <i class="fa-solid fa-user text-white"></i>
-          <input type="text" placeholder="Name" class="bg-transparent outline-none w-full text-white placeholder-gray-300">
+          <input type="text" placeholder="Name" class="bg-transparent outline-none w-full text-white placeholder-gray-300" required> <!--required added-->
         </div>
       </div>
 
       <!-- Email Field -->
       <div class="flex items-center gap-3 bg-white/20 rounded-lg p-3">
         <i class="fa-solid fa-envelope text-white"></i>
-        <input type="email" placeholder="Email" class="bg-transparent outline-none w-full text-white placeholder-gray-300">
+        <input type="email" placeholder="Email" class="bg-transparent outline-none w-full text-white placeholder-gray-300" required> <!--required added-->
       </div>
 
       <!-- Password Field -->
       <div class="flex items-center gap-3 bg-white/20 rounded-lg p-3">
         <i class="fa-solid fa-lock text-white"></i>
-        <input type="password" placeholder="Password" class="bg-transparent outline-none w-full text-white placeholder-gray-300">
+        <input type="password" placeholder="Password" class="bg-transparent outline-none w-full text-white placeholder-gray-300" required> <!--required added-->
       </div>
 
       <!-- Forgot password -->
@@ -73,15 +80,16 @@
 
       <!-- Buttons -->
       <div class="flex justify-between mt-4 gap-4">
-        <a href="get_your_skills.html" class="w-1/2 bg-cyan-400 text-white font-semibold py-2 rounded-lg text-center hover:bg-cyan-500 transition-colors duration-300 cursor-pointer">
+        <a href="z.new_get_skill.html" class="w-1/2 bg-cyan-400 text-white font-semibold py-2 rounded-lg text-center hover:bg-cyan-500 transition-colors duration-300 cursor-pointer">
           Sign Up
         </a>
-        <a href="get_your_skills.html" class="w-1/2 bg-cyan-400 text-white font-semibold py-2 rounded-lg text-center hover:bg-cyan-500 transition-colors duration-300 cursor-pointer">
+        <a href="z.new_get_skill.html" class="w-1/2 bg-cyan-400 text-white font-semibold py-2 rounded-lg text-center hover:bg-cyan-500 transition-colors duration-300 cursor-pointer">
           Login
         </a>
       </div>
     </form>
   </div>
+  
 
 </body>
 </html>

@@ -1,0 +1,220 @@
+<!-- /src/pages/landing.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi | Verify Your Skills</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="relative min-h-screen text-gray-800 overflow-x-hidden transition-colors duration-500" id="body">
+
+  <!-- 🔹 Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');">
+  </div>
+
+  <!-- 🔹 Overlay -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- 🔹 Main Content -->
+  <div class="relative z-10">
+
+    <!-- Header / Navigation Bar -->
+    <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
+
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--about us added-->
+        <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a> <!--contact us added-->
+        <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>      </p>
+      </nav>
+     
+      <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Sidebar (Same as Landing Page) -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+        <!---edit profile page link--><a href="edit_profile.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
+        <!---my skills page link--><a href="my_skills.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
+        <!---my badges page link--><a href="my_badges.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left"><i class="fa-solid fa-bell"></i> Notification Preferences</button>
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left"><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Hero Section -->
+    <section class="mb-10 mt-10 relative z-10 text-white">
+      <div class="container mx-auto px-6 md:px-12 flex flex-col-reverse md:flex-row items-center gap-12">
+        <div class="md:w-1/2">
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+            Showcase Your Skills. Unlock Your Opportunities.
+          </h1>
+          <p class="text-lg md:text-xl text-gray-200">
+            SkillFi helps professionals and learners validate their skills, build credibility, and get recognized by employers and peers worldwide.
+          </p>
+          <a href="#signup" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-500 transition">
+            Get Started
+          </a>
+        </div>
+        <div class="w-[500px] py-55">
+          <img src="https://static.vecteezy.com/system/resources/previews/019/051/660/original/men-working-illustration-png.png" alt="SkillFi Hero" class="justify-right shadow-xl">
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-gray-50 text-gray-800 relative z-10">
+      <div class="container mx-auto px-6 md:px-12">
+
+        <!-- Row 1: Introduction (Showcasing Skills) -->
+        <div class="flex flex-col mb-16">
+          <div class="md:w-full">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Empowering Talent, One Skill at a Time</h2>
+            <p class="text-gray-600 text-lg">
+              In an era defined by rapid technological change and global competition, talent alone is no longer enough to stand out. Every professional, student, and lifelong learner possesses unique abilities, yet many struggle to showcase their true potential in a way that earns trust and recognition. SkillFi is designed to close this gap by creating a secure, verifiable platform where your skills are more than just words—they are validated achievements. Our mission is to empower individuals to take control of their professional identity by enabling them to build a dynamic digital portfolio that highlights verified projects, completed courses, practical experience, and tangible accomplishments.
+
+With SkillFi, every skill you acquire—whether technical, creative, or analytical—is documented, verified, and presented in a way that resonates with employers, collaborators, and peers alike. The platform allows you to showcase not only what you can do but also the depth, consistency, and real-world impact of your work. From freelancers seeking global clients to students preparing to enter the job market, and professionals aiming for promotions or leadership roles, SkillFi ensures that your abilities are seen, recognized, and valued. By combining verification, credibility, and a professional showcase, we help you unlock the doors to opportunities that were previously hidden behind subjective judgments or incomplete resumes. Ultimately, SkillFi empowers you to confidently present your skills, transform potential into reality, and take charge of your career growth with clarity and authority.
+            </p>
+          </div>
+        </div>
+
+        <!-- Row 2: Mission (Career Growth Opportunities) -->
+        <div class="flex flex-col md:flex-row-reverse items-left gap-0 mb-10">
+          <div class="w-3/4">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Mission</h2>
+            <p class="text-gray-600 text-lg">
+              Career advancement in today’s fast-paced, competitive landscape requires more than just education or experience; it demands credible proof of your abilities and a way to communicate that to the right audience. SkillFi exists to bridge that critical gap. By offering verified skill endorsements and creating a trusted professional ecosystem, we make it easier for employers, recruiters, and collaborators to trust your expertise without ambiguity.
+
+With SkillFi, every achievement, from certifications to real-world projects, is validated and organized in a comprehensive digital profile, giving you a tangible edge in the marketplace. This not only improves your chances of landing the perfect job but also accelerates career progression, facilitates meaningful collaborations, and opens pathways to new industries or leadership opportunities. Beyond job placements, SkillFi connects you to personalized growth opportunities, mentorship programs, and skill development initiatives that are aligned with your professional goals. By combining skill verification with networking and learning resources, SkillFi empowers you to chart a clear, structured path for continuous growth. Whether you are entering the workforce, aiming for a promotion, or pivoting to a new career, SkillFi ensures that every step you take is backed by credible proof, recognized achievements, and a professional presence that inspires confidence in every interaction.
+            </p>
+          </div>
+          <div class="w-[500px]">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/career-development-4302339-3575375.png" alt="Career growth opportunities">
+          </div>
+        </div>
+
+        <!-- Row 3: Why SkillFi -->
+        <div class="flex flex-col mb-16">
+          <div class="md:w-full">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why SkillFi?</h2>
+            <p class="text-gray-600 text-lg">
+              In a world where resumes and self-reported skills are often insufficient to demonstrate true capability, SkillFi transforms the way individuals present and validate their professional competence. Unlike traditional methods, SkillFi verifies and authenticates your skills, turning claims into tangible evidence that employers, clients, and collaborators can trust instantly. Our platform provides a full ecosystem where verified skill badges, digital portfolios, and professional profiles come together to create a transparent and credible representation of your expertise.
+
+SkillFi is more than a repository of accomplishments; it is a career-enhancing tool that empowers users to strategically showcase their talents. By earning verified badges and building an authoritative digital profile, you not only gain visibility but also establish trust in every professional engagement. This is particularly critical in industries where credibility, reliability, and proof of ability are key differentiators. SkillFi supports professionals at every stage of their journey—from early-career individuals demonstrating potential, to seasoned experts proving mastery, to entrepreneurs showcasing tangible results to partners or investors.
+
+Moreover, SkillFi fosters a global standard of skill recognition, enabling professionals to be recognized beyond geographic and organizational boundaries. By converting your achievements into a universally understood format, it ensures that opportunities are not limited by perception but are earned through validated ability. In essence, SkillFi bridges the gap between potential and recognition, ambition and achievement, and skill and opportunity—making your professional journey measurable, visible, and infinitely more powerful. With SkillFi, your skills become your most credible and compelling story, opening doors to opportunities that might have seemed out of reach before.
+              SkillFi bridges the gap between your potential and the recognition you deserve.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-200 py-12 mt-16">
+      <div class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Branding -->
+        <div>
+          <h2 class="text-2xl font-bold mb-4">SkillFi</h2>
+          <p class="text-gray-400">
+            Empowering professionals and learners to validate their skills, build credibility, and unlock opportunities worldwide.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="z.about_us.html" class="hover:text-blue-400 transition">About Us</a></li>
+            <li><a href="#services" class="hover:text-blue-400 transition">Services</a></li>
+            <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+            <li><a href="#signup" class="hover:text-blue-400 transition">Sign Up</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center text-gray-500 mt-8">
+        &copy; 2025 SkillFi. All rights reserved.
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help.html";
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help&support.html";
+    }
+
+  </script>
+
+</body>
+</html>

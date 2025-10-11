@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi | Help & Support</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-white text-gray-800 min-h-screen overflow-y-auto">
+
+  <!-- Header / Navigation Bar -->
+    <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
+
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--about us added-->
+        <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a> <!--contact us added-->
+        <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>      </p>
+      </nav>
+      
+      <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
+
+  <!-- Main Content -->
+  <main class="px-8 md:px-16 py-12 max-w-5xl mx-auto space-y-12">
+
+    <h1 class="text-4xl font-bold text-blue-600 mb-6">Help & Support</h1>
+    <p class="text-gray-600 text-lg mb-8">Welcome to SkillFi Support. Here you can find answers to common questions, contact our team, or submit a support request.</p>
+
+    <!-- Contact Info Section -->
+    <section class="bg-gray-50 p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Contact Information</h2>
+      <div class="space-y-2 text-gray-700">
+        <p><i class="fa-solid fa-phone text-blue-500 mr-2"></i> Phone: +1-202-555-0123</p>
+        <p><i class="fa-solid fa-phone text-blue-500 mr-2"></i> Alternate: +1-202-555-0456</p>
+        <p><i class="fa-solid fa-envelope text-blue-500 mr-2"></i> Email: support@skillfi.com</p>
+        <p><i class="fa-solid fa-map-marker-alt text-blue-500 mr-2"></i> Address: 123 SkillFi Lane, Tech City, USA</p>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Frequently Asked Questions (FAQ)</h2>
+      <div class="space-y-4">
+        <details class="bg-white p-4 rounded-lg shadow-sm">
+          <summary class="font-semibold cursor-pointer">How can I reset my password?</summary>
+          <p class="mt-2 text-gray-700">Go to Edit Profile &gt; Change Password. Enter your current password and set a new password.</p>
+        </details>
+        <details class="bg-white p-4 rounded-lg shadow-sm">
+          <summary class="font-semibold cursor-pointer">How do I download my badges?</summary>
+          <p class="mt-2 text-gray-700">Navigate to My Badges page and click the “Download” button under the desired badge.</p>
+        </details>
+        <details class="bg-white p-4 rounded-lg shadow-sm">
+          <summary class="font-semibold cursor-pointer">How can I contact support?</summary>
+          <p class="mt-2 text-gray-700">You can call, email, or fill out the support form below. Our team will respond within 24 hours.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Support Form -->
+    <section class="bg-gray-50 p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Submit a Support Request</h2>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-gray-700 mb-1">Name</label>
+          <input type="text" placeholder="Your Name" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-1">Email</label>
+          <input type="email" placeholder="Your Email" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-1">Subject</label>
+          <input type="text" placeholder="Subject" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-1">Message</label>
+          <textarea placeholder="Describe your issue..." class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 h-32"></textarea>
+        </div>
+        <button type="button" onclick="submitSupport()" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition">Submit</button>
+      </form>
+    </section>
+
+    <!-- Live Chat Section -->
+    <section class="bg-gray-50 p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Live Chat Support</h2>
+      <p class="text-gray-700 mb-4">Chat live with our support team. Available Monday to Friday, 9 AM – 6 PM (EST).</p>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition"><i class="fa-solid fa-comments mr-2"></i> Start Live Chat</button>
+    </section>
+
+    <!-- Tips & Resources -->
+    <section class="bg-gray-50 p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Tips & Resources</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Check out our <a href="#" class="text-blue-500 hover:underline">SkillFi Tutorials</a> for learning new skills.</li>
+        <li>Visit the <a href="#" class="text-blue-500 hover:underline">Community Forum</a> to ask questions.</li>
+        <li>Read the <a href="#" class="text-blue-500 hover:underline">User Guide</a> for detailed instructions.</li>
+        <li>Follow us on social media for updates and tips.</li>
+      </ul>
+    </section>
+
+  </main>
+ <!-- Sidebar (Same as Landing Page) -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+        <!---edit profile page link--><a href="edit_profile.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
+        <!---my skills page link--><a href="my_skills.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
+        <!---my badges page link--><a href="my_badges.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left"><i class="fa-solid fa-bell"></i> Notification Preferences</button>
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left"><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+      </div>
+    </div>
+  </div>
+<script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help&support.html";
+    }
+  </script>
+  <!-- JS -->
+  <script>
+    function submitSupport() {
+      alert("Thank you! Your support request has been submitted. Our team will contact you shortly.");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

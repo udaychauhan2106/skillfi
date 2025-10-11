@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skillfi | Verify Your Skills</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="relative min-h-screen text-gray-800 overflow-hidden">
+
+  <!-- Background -->
+  <div class="absolute inset-0 bg-cover bg-center" 
+       style="background-image: url('https://image2url.com/images/1760093894614-6a2c6c6e-2efb-44db-bc44-cdd0bc3166f3.jpg');">
+  </div>
+  <div class="absolute inset-0 bg-black/20"></div>
+
+ <!-- Header / Navigation Bar -->
+    <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
+
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--about us added-->
+        <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a> <!--contact us added-->
+        <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>      </p>
+      </nav>
+      <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Floating Icon Bar (Tailwind only) -->
+  <div class="fixed top-20 left-5 flex flex-col gap-5 bg-white/20 backdrop-blur-lg p-3 rounded-full z-50">
+    <a href="https://web.telegram.org/k/"><button class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lg hover:bg-blue-500 hover:text-white transform transition-transform duration-300 hover:scale-110">
+      <i class="fa-brands fa-telegram text-3xl"></i>
+    </button></a>
+    <a href="https://discord.com/"><button class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lg hover:bg-blue-500 hover:text-white transform transition-transform duration-300 hover:scale-110">
+      <i class="fa-brands fa-discord text-3xl"></i>
+    </button></a>
+    <a href="mailto:guptajhanvi319@gmail.com"><button class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lg hover:bg-blue-500 hover:text-white transform transition-transform duration-300 hover:scale-110">
+  <i class="fa-solid fa-envelope text-3xl"></i></button>
+</a>
+    <a href="https://github.com/udaychauhan2106/skillfi.git"><button class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-lg hover:bg-blue-500 hover:text-white transform transition-transform duration-300 hover:scale-110">
+      <i class="fa-brands fa-github text-3xl"></i>
+    </button></a>
+    
+  </div>
+
+</body>
+</html>
+

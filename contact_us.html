@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi | Contact Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="relative min-h-screen text-gray-800 overflow-x-hidden" id="body">
+
+  <!-- Header / Navigation Bar -->
+    <header class="flex items-center justify-between px-8 py-4 bg-blue-900 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
+
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--about us added-->
+        <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a> <!--contact us added-->
+        <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>      </p>
+      </nav>
+      <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+        <a href="edit_profile.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
+        <a href="my_skills.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
+        <a href="my_badges.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left"><i class="fa-solid fa-bell"></i> Notification Preferences</button>
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left"><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="relative z-10 bg-white min-h-screen pt-16">
+    <section class="container mx-auto px-6 md:px-12 py-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 text-center">Contact Us</h1>
+      <p class="text-gray-600 text-lg text-center mb-12">
+        Have questions, suggestions, or need support? Reach out to us and we’ll get back to you as soon as possible.
+      </p>
+
+      <div class="max-w-3xl mx-auto">
+        <form class="space-y-6">
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2">Full Name</label>
+            <input type="text" placeholder="Your name" required
+              class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2">Email</label>
+            <input type="email" placeholder="you@example.com" required
+              class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2">Subject</label>
+            <input type="text" placeholder="Subject" required
+              class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"/>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2">Message</label>
+            <textarea rows="6" placeholder="Your message..." required
+              class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-lg font-semibold transition">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="container mx-auto px-6 md:px-12 py-12">
+      <div class="grid md:grid-cols-3 gap-8 text-gray-700 text-center">
+        <div>
+          <i class="fa-solid fa-phone text-3xl text-blue-600 mb-2"></i>
+          <p>+91 98765 43210</p>
+        </div>
+        <div>
+          <i class="fa-solid fa-envelope text-3xl text-blue-600 mb-2"></i>
+          <p>support@skillfi.com</p>
+        </div>
+        <div>
+          <i class="fa-solid fa-location-dot text-3xl text-blue-600 mb-2"></i>
+          <p>Bengaluru, India</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-200 py-12 mt-16">
+    <div class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h2 class="text-2xl font-bold mb-4">SkillFi</h2>
+        <p class="text-gray-400">Empowering professionals and learners to validate their skills, build credibility, and unlock opportunities worldwide.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="landing.html" class="hover:text-blue-400 transition">Home</a></li>
+          <li><a href="z.about_us.html" class="hover:text-blue-400 transition">About Us</a></li>
+          <li><a href="contact.html" class="hover:text-blue-400 transition">Contact</a></li>
+          <li><a href="#signup" class="hover:text-blue-400 transition">Sign Up</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-8">
+      &copy; 2025 SkillFi. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help.html";
+    }
+  </script>
+
+</body>
+</html>
+

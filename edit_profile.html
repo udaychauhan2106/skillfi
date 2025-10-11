@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skillfi | Edit Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="relative min-h-screen text-gray-800 overflow-hidden transition-colors duration-500">
+
+  <!-- Background Image -->
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');"></div>
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition font-semibold">
+          <i class="fa-solid fa-pen"></i> Edit Profile
+        </a>
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition">
+          <i class="fa-solid fa-lightbulb"></i> My Skills
+        </a>
+        <a href="#" class="flex items-center gap-3 hover:text-blue-400 transition">
+          <i class="fa-solid fa-medal"></i> My Badges
+        </a>
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left">
+          <i class="fa-solid fa-bell"></i> Notification Preferences
+        </button>
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left">
+          <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+      </div>
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left">
+          <i class="fa-solid fa-circle-question"></i> Help & Support
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 flex justify-center items-start pt-16 pb-16 px-4">
+    <div class="max-w-3xl w-full bg-white/20 backdrop-blur-lg rounded-2xl shadow-lg p-8 border border-white/30">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-100">Edit Profile</h2>
+
+      <!-- Profile Picture with Capture / Upload / Remove -->
+      <div class="flex flex-col items-center mb-6">
+        <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-white/40 mb-3 relative">
+          <img id="profilePreview" src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2">
+          <button onclick="captureImage()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition text-sm">Capture</button>
+          <button onclick="document.getElementById('profilePic').click()" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition text-sm">Upload</button>
+          <button onclick="removeImage()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition text-sm">Remove</button>
+        </div>
+        <input type="file" id="profilePic" accept="image/*" class="hidden" onchange="previewImage(event)">
+      </div>
+
+      <!-- Form -->
+      <form class="space-y-4 text-white">
+        <div>
+          <label class="block font-medium mb-1" for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Jhanvi Gupta" class="w-full px-4 py-2 rounded-lg bg-white/30 border border-white/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900">
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1" for="email">Email</label>
+          <input type="email" id="email" placeholder="jhanvi@example.com" class="w-full px-4 py-2 rounded-lg bg-white/30 border border-white/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900">
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1" for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="+91 9876543210" class="w-full px-4 py-2 rounded-lg bg-white/30 border border-white/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900">
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1" for="bio">Bio / About</label>
+          <textarea id="bio" rows="4" placeholder="Write something about yourself..." class="w-full px-4 py-2 rounded-lg bg-white/30 border border-white/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900"></textarea>
+        </div>
+
+        <div class="flex justify-end mt-6">
+          <button type="submit" class="px-6 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = function(){
+        const output = document.getElementById('profilePreview');
+        output.src = reader.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function removeImage() {
+      document.getElementById('profilePreview').src = "https://via.placeholder.com/150";
+    }
+
+    function captureImage() {
+      // Simple webcam capture
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Webcam not supported in this browser");
+        return;
+      }
+
+      const video = document.createElement('video');
+      video.autoplay = true;
+
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          video.srcObject = stream;
+
+          const captureWindow = document.createElement('div');
+          captureWindow.className = "fixed inset-0 bg-black/70 flex flex-col items-center justify-center z-50";
+          captureWindow.innerHTML = `
+            <div class="relative bg-white rounded-xl p-4 flex flex-col items-center">
+              <div id="videoContainer" class="w-80 h-60 mb-4"></div>
+              <div class="flex gap-2">
+                <button id="snapBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Snap</button>
+                <button id="closeBtn" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Cancel</button>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(captureWindow);
+          document.getElementById('videoContainer').appendChild(video);
+
+          document.getElementById('snapBtn').onclick = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            document.getElementById('profilePreview').src = canvas.toDataURL('image/png');
+            stream.getTracks().forEach(track => track.stop());
+            captureWindow.remove();
+          };
+
+          document.getElementById('closeBtn').onclick = () => {
+            stream.getTracks().forEach(track => track.stop());
+            captureWindow.remove();
+          };
+
+        })
+        .catch(err => alert("Error accessing webcam: " + err));
+    }
+
+    function openNotifications() { alert("Redirecting to Notification Preferences..."); window.location.href = "notifications.html"; }
+    function logout() { alert("You have been logged out."); window.location.href = "loginpage.html"; }
+    function openHelp() { alert("Redirecting to Help & Support..."); window.location.href = "help.html"; }
+  </script>
+</body>
+</html>
+

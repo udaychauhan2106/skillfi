@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillFi | My Badges</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="relative min-h-screen text-gray-800 overflow-y-auto transition-colors duration-500" id="body">
+
+  <!-- Background -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg');"></div>
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="relative z-10">
+
+    <!-- Header / Navigation Bar -->
+    <header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+      <div>
+        <img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" />
+      </div>
+
+      <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+        <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a> <!--about us added-->
+        <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+        <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a> <!--contact us added-->
+        <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a><p>      </p>
+      </nav>
+      
+      <div class="flex items-center">
+        <div 
+          class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+          onclick="toggleSidebar()">
+          <i class="fa-solid fa-user text-xl"></i>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="pt-16 pb-12 relative z-10 px-8 md:px-16 overflow-y-auto">
+      <h1 class="text-4xl text-white font-bold mb-8 drop-shadow-lg">My Badges</h1>
+
+      <!-- Badges Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+
+        <!-- Badge 1 -->
+        <div class="bg-gradient-to-b from-blue-600 via-blue-500 to-blue-400 rounded-3xl shadow-2xl flex flex-col items-center justify-between p-6 text-white">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JS Logo" class="w-24 h-24 rounded-full bg-white/20 p-2">
+          <h2 class="text-2xl font-semibold mt-4">JavaScript</h2>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=JavaScriptBadge" alt="QR Code" class="w-24 h-24 mt-2 rounded-lg bg-white/20 p-1">
+          <button onclick="downloadBadge('JavaScript')" class="mt-4 bg-white text-blue-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition shadow-md">Download</button>
+        </div>
+
+        <!-- Badge 2 -->
+        <div class="bg-gradient-to-b from-blue-600 via-blue-500 to-blue-400 rounded-3xl shadow-2xl flex flex-col items-center justify-between p-6 text-white">
+          <img src="https://cdn-icons-png.flaticon.com/512/1822/1822899.png" alt="Python Logo" class="w-24 h-24 rounded-full bg-white/20 p-2">
+          <h2 class="text-2xl font-semibold mt-4">Python</h2>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=PythonBadge" alt="QR Code" class="w-24 h-24 mt-2 rounded-lg bg-white/20 p-1">
+          <button onclick="downloadBadge('Python')" class="mt-4 bg-white text-blue-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition shadow-md">Download</button>
+        </div>
+
+        <!-- Badge 3 -->
+        <div class="bg-gradient-to-b from-blue-600 via-blue-500 to-blue-400 rounded-3xl shadow-2xl flex flex-col items-center justify-between p-6 text-white">
+          <img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" alt="React Logo" class="w-24 h-24 rounded-full bg-white/20 p-2">
+          <h2 class="text-2xl font-semibold mt-4">React</h2>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=ReactBadge" alt="QR Code" class="w-24 h-24 mt-2 rounded-lg bg-white/20 p-1">
+          <button onclick="downloadBadge('React')" class="mt-4 bg-white text-blue-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition shadow-md">Download</button>
+        </div>
+
+        <!-- Badge 4 -->
+        <div class="bg-gradient-to-b from-blue-600 via-blue-500 to-blue-400 rounded-3xl shadow-2xl flex flex-col items-center justify-between p-6 text-white">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML Logo" class="w-24 h-24 rounded-full bg-white/20 p-2">
+          <h2 class="text-2xl font-semibold mt-4">HTML</h2>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=HTMLBadge" alt="QR Code" class="w-24 h-24 mt-2 rounded-lg bg-white/20 p-1">
+          <button onclick="downloadBadge('HTML')" class="mt-4 bg-white text-blue-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition shadow-md">Download</button>
+        </div>
+
+        <!-- Badge 5 -->
+        <div class="bg-gradient-to-b from-blue-600 via-blue-500 to-blue-400 rounded-3xl shadow-2xl flex flex-col items-center justify-between p-6 text-white">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png" alt="CSS Logo" class="w-24 h-24 rounded-full bg-white/20 p-2">
+          <h2 class="text-2xl font-semibold mt-4">CSS</h2>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=CSSBadge" alt="QR Code" class="w-24 h-24 mt-2 rounded-lg bg-white/20 p-1">
+          <button onclick="downloadBadge('CSS')" class="mt-4 bg-white text-blue-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition shadow-md">Download</button>
+        </div>
+
+        <!-- Badge 6 -->
+        <div class="bg-gradient-to-b from-blue-600 via-blue-500 to-blue-400 rounded-3xl shadow-2xl flex flex-col items-center justify-between p-6 text-white">
+          <img src="https://cdn-icons-png.flaticon.com/512/919/919851.png" alt="Node Logo" class="w-24 h-24 rounded-full bg-white/20 p-2">
+          <h2 class="text-2xl font-semibold mt-4">Node.js</h2>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=NodeBadge" alt="QR Code" class="w-24 h-24 mt-2 rounded-lg bg-white/20 p-1">
+          <button onclick="downloadBadge('Node.js')" class="mt-4 bg-white text-blue-900 font-semibold px-6 py-2 rounded-lg hover:bg-gray-100 transition shadow-md">Download</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar (Same as Landing Page) -->
+  <div id="sidebar" class="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white">
+    <div class="p-6 flex flex-col h-full">
+      <button class="self-end text-3xl hover:text-blue-400 transition" onclick="toggleSidebar()">&times;</button>
+      <div class="mt-6 space-y-6 text-lg flex-1">
+        <h3 class="text-2xl font-semibold border-b border-slate-700 pb-3">Hi, Jhanvi 👋</h3>
+        <!---edit profile page link--><a href="edit_profile.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-pen"></i> Edit Profile</a>
+        <!---my skills page link--><a href="my_skills.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-lightbulb"></i> My Skills</a>
+        <!---my badges page link--><a href="my_badges.html" class="flex items-center gap-3 hover:text-blue-400 transition"><i class="fa-solid fa-medal"></i> My Badges</a>
+        <button onclick="openNotifications()" class="flex items-center gap-3 hover:text-blue-400 transition w-full text-left"><i class="fa-solid fa-bell"></i> Notification Preferences</button>
+        <button onclick="logout()" class="flex items-center gap-3 text-red-400 hover:text-red-500 transition w-full text-left"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+      <div class="border-t border-slate-700 pt-5 mt-5">
+        <button onclick="openHelp()" class="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition w-full text-left"><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.width = sidebar.style.width === '300px' ? '0' : '300px';
+    }
+    function openNotifications() {
+      alert("Redirecting to Notification Preferences...");
+      window.location.href = "notifications.html";
+    }
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "loginpage.html";
+    }
+    function openHelp() {
+      alert("Redirecting to Help & Support...");
+      window.location.href = "help&support.html";
+    }
+  </script>
+
+</body>
+</html>
