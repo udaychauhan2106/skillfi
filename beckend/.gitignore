@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+firebase-key.json
+
+# Uploads and media
+uploads/
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE & editor settings
+.vscode/
+.idea/
+
