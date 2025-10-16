@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillFi | Code Arena</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+  body {
+    background: linear-gradient(135deg,#000 0%, #071028 40%, #07102b 100%);
+    color: white;
+    font-family: 'Inter', sans-serif;
+  }
+  .glass {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    backdrop-filter: blur(12px);
+  }
+  .neon {
+    text-shadow: 0 2px 12px rgba(59,130,246,0.25);
+  }
+</style>
+</head>
+
+<body class="overflow-hidden">
+
+<!-- HEADER / NAV -->
+<header class="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
+  <div><img src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png" class="w-25 h-10" /></div>
+  <nav class="hidden md:flex space-x-8 text-lg font-medium text-white ml-auto">
+    <a href="z.about_us.html" class="hover:text-blue-400">&lt;About Us&gt;</a>
+    <a href="services.html" class="hover:text-blue-400">&lt;Services&gt;</a>
+    <a href="contact_us.html" class="hover:text-blue-400">&lt;Contact Us&gt;</a>
+    <a href="loginpage.html" class="hover:text-blue-400">&lt;Sign Up&gt;</a>
+  </nav>
+  <div class="flex items-center ml-6">
+    <div 
+      class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 flex items-center justify-center rounded-full cursor-pointer shadow-lg transition"
+      onclick="toggleSidebar()">
+      <i class="fa-solid fa-user text-xl"></i>
+    </div>
+  </div>
+</header>
+
+<!-- 🔹 Main Layout -->
+<main class="pt-6 px-6 pb-6 h-[calc(100vh-96px)] flex flex-col">
+
+  <!-- 💥 Heading -->
+  <div class="text-center mb-10">
+    <h1 class="text-4xl font-bold neon tracking-wide">Skill Code Arena</h1>
+  </div>
+
+  <!-- 🧠 Question + Code + Output Grid -->
+  <div class="flex-1 flex gap-5">
+
+    <!-- 🧩 Question Section -->
+    <section class="glass rounded-2xl p-5 border border-white/5 shadow-lg w-1/3 flex flex-col">
+      <div class="flex items-start justify-between mb-3">
+        <div>
+          <h3 class="text-xl font-semibold neon">AI-Generated Question</h3>
+        </div>
+        <div class="text-sm text-white/60">
+          Difficulty:
+          <span id="qDifficulty" class="px-2 py-1 rounded-md bg-white/5 ml-2 text-xs">—</span>
+        </div>
+      </div>
+
+      <div id="questionBox" class="mt-2 flex-1 text-sm text-white/90 p-3 rounded-lg bg-black/20 border border-white/6 overflow-auto">
+        Click <b>Get Question</b> to generate a challenge.
+      </div>
+
+      <div class="mt-4 flex gap-2">
+        <button id="getQ" class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-xl font-medium transition">Get Question</button>
+      </div>
+    </section>
+
+    <!-- 💻 Code Editor + Output -->
+    <section class="glass rounded-2xl p-5 border border-white/5 shadow-lg flex-1 flex flex-col">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-xl font-semibold neon">Code Editor</h3>
+        <div class="flex items-center gap-3">
+          <div id="timer" class="px-3 py-2 bg-black/20 rounded-lg text-sm">00:00</div>
+          <button id="startTimer" class="px-5 py-2 bg-green-600 hover:bg-green-500 rounded-md text-sm">Start</button>
+          <button id="pauseTimer" class="px-5 py-2 bg-red-600 hover:bg-red-500 rounded-md text-sm">End</button>
+        </div>
+      </div>
+
+      <textarea id="codeEditor" class="flex-1 w-full p-4 rounded-xl bg-[#0b1220] border border-white/6 text-white text-sm resize-none" placeholder="// Write your code here..."></textarea>
+
+      <div class="mt-3 flex gap-2">
+        <button id="runBtn" class="flex-1 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-xl text-white font-medium">Run & Judge</button>
+      </div>
+
+      <div id="outputArea" class="mt-3 bg-black/20 rounded-xl p-3 border border-white/6 min-h-[120px] overflow-auto text-sm text-white/90 font-mono">
+        Output will appear here.
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- 🔹 Script -->
+<script>
+const QUESTIONS = [
+  { title:'Two Sum', difficulty:'Easy', description:'Given an array nums & target, return indices of two numbers that sum to target.', template:`function twoSum(nums, target){const map=new Map();for(let i=0;i<nums.length;i++){const need=target-nums[i];if(map.has(need))return[map.get(need),i];map.set(nums[i],i);}}\nconsole.log(twoSum([2,7,11,15],9));` },
+  { title:'Reverse String', difficulty:'Easy', description:'Reverse a string. Example: "SkillFi" → "ifllikS".', template:`function reverseStr(s){return s.split('').reverse().join('');}\nconsole.log(reverseStr('SkillFi'));` },
+  { title:'Count Vowels', difficulty:'Medium', description:'Count vowels in a string. Example: "SkillFi" → 2.', template:`function countVowels(s){return(s.match(/[aeiouAEIOU]/g)||[]).length;}\nconsole.log(countVowels('SkillFi'));` }
+];
+
+const questionBox = document.getElementById('questionBox');
+const qDifficulty = document.getElementById('qDifficulty');
+const codeEditor = document.getElementById('codeEditor');
+const getQ = document.getElementById('getQ');
+const outputArea = document.getElementById('outputArea');
+
+// 🧠 Random Question
+getQ.addEventListener('click', ()=>{
+  const q = QUESTIONS[Math.floor(Math.random()*QUESTIONS.length)];
+  qDifficulty.textContent = q.difficulty;
+  questionBox.innerHTML = `<div class="text-blue-300 font-semibold text-lg mb-2">${q.title}</div><p class="text-sm text-white/85">${q.description}</p>`;
+  codeEditor.value = q.template;
+  outputArea.textContent = "Output will appear here.";
+});
+
+// ▶️ Run Code
+document.getElementById('runBtn').addEventListener('click', ()=>{
+  try {
+    let res = eval(codeEditor.value);
+    outputArea.textContent = res ?? "Code executed successfully!";
+  } catch(e) {
+    outputArea.textContent = e;
+  }
+});
+
+// ⏱️ Timer
+let timerInterval=null, seconds=0;
+const timerDisplay=document.getElementById('timer');
+document.getElementById('startTimer').addEventListener('click',()=>{
+  if(timerInterval) return;
+  timerInterval=setInterval(()=>{
+    seconds++;
+    let m=Math.floor(seconds/60).toString().padStart(2,'0');
+    let s=(seconds%60).toString().padStart(2,'0');
+    timerDisplay.textContent=`${m}:${s}`;
+  },1000);
+});
+document.getElementById('pauseTimer').addEventListener('click',()=>{ clearInterval(timerInterval); timerInterval=null; });
+document.getElementById('resetTimer').addEventListener('click',()=>{ clearInterval(timerInterval); timerInterval=null; seconds=0; timerDisplay.textContent='00:00'; });
+</script>
+
+</body>
+</html>
