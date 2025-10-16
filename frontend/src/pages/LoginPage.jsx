@@ -9,19 +9,14 @@ export default function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // ✅ Add authentication later; for now, redirect
     navigate("/uploadskill");
   };
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-start bg-[#0a0a12] overflow-hidden text-white">
-      {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0d0d1a] via-[#0b0b17] to-[#000000]"></div>
-
-      {/* Navbar */}
       <Navbar />
 
-      {/* Animated Login Card */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -31,7 +26,6 @@ export default function LoginPage() {
         <h1 className="text-3xl font-bold text-center mb-6 text-blue-400">Login</h1>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-5">
-          {/* Name Field */}
           <div className="flex items-center gap-3 bg-white/10 rounded-lg p-3 border border-white/10">
             <FaUser className="text-gray-300" />
             <input
@@ -42,7 +36,6 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Email Field */}
           <div className="flex items-center gap-3 bg-white/10 rounded-lg p-3 border border-white/10">
             <FaEnvelope className="text-gray-300" />
             <input
@@ -53,7 +46,6 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Password Field */}
           <div className="flex items-center gap-3 bg-white/10 rounded-lg p-3 border border-white/10">
             <FaLock className="text-gray-300" />
             <input
@@ -71,7 +63,6 @@ export default function LoginPage() {
             </a>
           </p>
 
-          {/* Buttons */}
           <div className="flex gap-4 mt-4">
             <motion.button
               whileHover={{ scale: 1.05 }}
