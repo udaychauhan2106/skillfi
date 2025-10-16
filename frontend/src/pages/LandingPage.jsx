@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 export default function LandingPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white overflow-hidden">
-      {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -15,7 +14,6 @@ export default function LandingPage() {
       />
       <div className="absolute inset-0 bg-black/60" />
 
-      {/* Navbar */}
       <header className="relative z-20 flex items-center justify-between w-full px-8 py-5 backdrop-blur-md bg-white/5 shadow-lg">
         <div>
           <img
@@ -41,7 +39,6 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
       <main className="relative z-10 text-center mt-32 max-w-3xl">
         <h1 className="text-5xl font-extrabold mb-6 leading-tight">
           Empower Your <span className="text-blue-400">Skills</span><br />
@@ -51,7 +48,6 @@ export default function LandingPage() {
           SkillFi helps you showcase your verified skills and connect with global opportunities.
         </p>
 
-        {/* ✅ Framer Motion Button */}
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link
             to="/uploadskill"
@@ -62,7 +58,6 @@ export default function LandingPage() {
         </motion.div>
       </main>
 
-      {/* Footer */}
       <footer className="relative z-10 mt-32 text-gray-400 text-sm">
         © 2025 SkillFi. All rights reserved.
       </footer>
