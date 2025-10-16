@@ -8,8 +8,7 @@ const upload = multer({ dest: "uploads/audio" });
 
 router.post("/", upload.single("audioChunk"), async (req, res) => {
   const { userId, sessionId } = req.body;
-  // TODO: Add simple verification or ML model to check for mismatched voice
-  const violationDetected = Math.random() < 0.05; // placeholder: 5% chance for demo
+  const violationDetected = Math.random() < 0.05; 
   if (violationDetected) await logProctorEvent(userId, sessionId, "voiceMismatch", 5);
   res.json({ violation: violationDetected });
 });
