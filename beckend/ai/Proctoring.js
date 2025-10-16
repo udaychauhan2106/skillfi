@@ -1,9 +1,5 @@
-// ai/proctoring.js
 import ProctorLog from "../models/ProctorLog.js";
 
-/**
- * Save a single proctoring event
- */
 export async function logProctorEvent(userId, sessionId, type, severity = 1) {
   try {
     let log = await ProctorLog.findOne({ userId, sessionId });
@@ -18,12 +14,6 @@ export async function logProctorEvent(userId, sessionId, type, severity = 1) {
   }
 }
 
-/**
- * Compute penalty score from recorded events
- * @param {string} userId
- * @param {string} sessionId
- * @param {number} maxPenalty Maximum points to deduct (e.g., 30)
- */
 export async function computeCheatingPenalty(userId, sessionId, maxPenalty = 30) {
   try {
     const log = await ProctorLog.findOne({ userId, sessionId });
@@ -37,9 +27,7 @@ export async function computeCheatingPenalty(userId, sessionId, maxPenalty = 30)
   }
 }
 
-/**
- * Adjust AI score dynamically
- */
+
 export async function applyProctorPenalty(originalScore, userId, sessionId, maxPenalty = 30) {
   const penalty = await computeCheatingPenalty(userId, sessionId, maxPenalty);
   return Math.max(0, originalScore - penalty);
