@@ -2,33 +2,28 @@ import mongoose from "mongoose";
 
 const projectSchema = new mongoose.Schema(
   {
-    // 🧠 User reference (optional)
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: false, // ✅ no longer required
+      required: false, 
     },
 
-    // 🏷️ Skill name (e.g., "React", "Python", etc.)
     skill: {
       type: String,
       required: [true, "Skill is required"],
       trim: true,
     },
 
-    // 📄 Project title (same as skill for now)
     title: {
       type: String,
       trim: true,
     },
 
-    // 🔗 GitHub link (optional)
     githubLink: {
       type: String,
       trim: true,
     },
 
-    // 📁 File info
     fileName: {
       type: String,
       trim: true,
@@ -38,7 +33,6 @@ const projectSchema = new mongoose.Schema(
       trim: true,
     },
 
-    // 🤖 AI Evaluation
     aiScore: {
       type: Number,
       default: 0,
