@@ -6,14 +6,13 @@ const Badge = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // ✅ Read skill & username from navigation state
+
   const { skill = "JavaScript", username = "User" } = location.state || {};
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   const handleDownload = () => {
     alert(`Downloading ${skill} badge...`);
-    // TODO: Use html2canvas to capture and download badge as image
   };
 
   const handleRedirect = (path, msg) => {
@@ -23,7 +22,6 @@ const Badge = () => {
 
   return (
     <div className="relative min-h-screen text-gray-800 overflow-hidden transition-colors duration-500">
-      {/* 🔹 Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -33,9 +31,7 @@ const Badge = () => {
       />
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* 🔹 Main Content */}
       <div className="relative z-10">
-        {/* Header */}
         <header className="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm">
           <div>
             <img
@@ -70,29 +66,24 @@ const Badge = () => {
           </div>
         </header>
 
-        {/* 🔹 Badge Section */}
         <main className="flex flex-col items-center justify-center px-6 py-16">
           <div className="bg-gradient-to-b from-purple-500 via-pink-500 to-red-500 rounded-3xl shadow-2xl flex flex-col items-center justify-start p-8 w-[450px] h-[700px] text-white">
-            {/* Skill Logo */}
             <img
               src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
               alt={`${skill} Logo`}
               className="w-40 h-40 rounded-full bg-white/20 mt-5 mb-5"
             />
 
-            {/* Skill Name */}
             <h1 className="text-5xl text-center drop-shadow-lg mb-7">
               {skill}
             </h1>
 
-            {/* QR Code */}
             <img
               src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${skill}Badge-${username}`}
               alt="QR Code"
               className="w-[200px] h-[200px] rounded-lg bg-white/20 p-2 mb-0"
             />
 
-            {/* Download Button */}
             <button
               onClick={handleDownload}
               className="bg-white text-purple-900 font-semibold px-10 py-4 rounded-lg hover:bg-gray-100 transition shadow-md mt-20"
@@ -103,7 +94,6 @@ const Badge = () => {
         </main>
       </div>
 
-      {/* 🔹 Sidebar */}
       <div
         className={`fixed top-0 right-0 h-full ${
           sidebarOpen ? "w-[300px]" : "w-0"
