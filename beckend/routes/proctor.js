@@ -1,9 +1,7 @@
-// routes/proctor.js
 
 import { Server } from "socket.io";
 import { logProctorEvent } from "../ai/Proctoring.js";
 
-// Call this inside server.js after creating your express app
 export function initProctorSocket(httpServer) {
   const io = new Server(httpServer, { cors: { origin: "*" } });
 
