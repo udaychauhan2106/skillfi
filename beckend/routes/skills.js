@@ -3,10 +3,6 @@ import Skill from "../models/Skill.js";
 
 const router = express.Router();
 
-/**
- * @route   GET /api/skills
- * @desc    Get all skills
- */
 router.get("/", async (req, res) => {
   try {
     const skills = await Skill.find();
@@ -17,10 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-/**
- * @route   GET /api/skills/:id
- * @desc    Get a specific skill by ID
- */
+
 router.get("/:id", async (req, res) => {
   try {
     const skill = await Skill.findById(req.params.id);
@@ -32,10 +25,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-/**
- * @route   POST /api/skills
- * @desc    Add a new skill
- */
+
 router.post("/", async (req, res) => {
   try {
     const { name, duration, hierarchy } = req.body;
