@@ -17,19 +17,16 @@ export default function SkillUpload() {
   const [evaluation, setEvaluation] = useState(null);
   const navigate = useNavigate();
 
-  // Toggle sidebar
   const toggleSidebar = () => {
     const sidebar = document.getElementById("sidebar");
     sidebar.style.width = sidebar.style.width === "300px" ? "0" : "300px";
   };
 
-  // Logout
-  const handleLogout = () => {
+=  const handleLogout = () => {
     alert("You have been logged out.");
     window.location.href = "/login";
   };
 
-  // ✅ Upload + AI Evaluation + Navigate to /rules/:id
   const handleUpload = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -52,10 +49,8 @@ export default function SkillUpload() {
       console.log("✅ Server Response:", data);
 
       if (data.success && data.project?._id) {
-        // Save project to localStorage
         localStorage.setItem("activeSkill", JSON.stringify(data.project));
 
-        // Set evaluation details for UI feedback (optional)
         setEvaluation({
           score: data.project.aiScore ?? "N/A",
           feedback:
@@ -63,10 +58,9 @@ export default function SkillUpload() {
             "Evaluation completed, but feedback missing.",
         });
 
-        // 🟢 Navigate to Test Rules page
         setTimeout(() => {
           navigate(`/rules/${data.project._id}`);
-        }, 1200); // small delay so user can see "Success"
+        }, 1200);
       } else {
         alert("Evaluation complete, but project data missing.");
       }
@@ -80,11 +74,9 @@ export default function SkillUpload() {
 
   return (
     <div className="relative min-h-screen text-gray-800 overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 bg-[url('https://i.pinimg.com/1200x/73/b8/a9/73b8a9fdd483d6ddac928aa780ccfb2d.jpg')] bg-cover bg-center"></div>
       <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Header */}
       <header className="flex items-center justify-between px-8 py-4 bg-white/0 backdrop-blur-md shadow-sm relative z-10">
         <img
           src="https://image2url.com/images/1760087403658-2a78793e-55ea-4d22-80bf-f49a687cd2c8.png"
@@ -117,7 +109,6 @@ export default function SkillUpload() {
         </div>
       </header>
 
-      {/* Upload Form */}
       <main className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-10 px-6 py-16">
         <form
           onSubmit={handleUpload}
@@ -127,7 +118,6 @@ export default function SkillUpload() {
             Upload Your Skill
           </h2>
 
-          {/* Skill Input */}
           <textarea
             rows="5"
             placeholder="Describe your skill (e.g., Python, React, UI Design)..."
@@ -136,7 +126,6 @@ export default function SkillUpload() {
             className="w-full p-4 rounded-lg text-black-900 border-1 border-grey-200 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-5 resize-none"
           ></textarea>
 
-          {/* File Upload */}
           <label className="block text-lg mb-3 font-bold text-gray-300">
             Upload Project File:
           </label>
@@ -146,7 +135,6 @@ export default function SkillUpload() {
             className="block w-full text-black-200 file:mr-4 file:py-2 file:px-6 file:rounded-lg file:border-0 file:text-lg file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-500 mb-6"
           />
 
-          {/* GitHub Link */}
           <label className="text-lg block mb-3 text-gray-300 ">
             GitHub Repository Link:
           </label>
@@ -158,7 +146,6 @@ export default function SkillUpload() {
             className="w-full h-14 p-3 border-1 rounded-lg text-black-900 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-6"
           />
 
-          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
@@ -169,7 +156,6 @@ export default function SkillUpload() {
         </form>
       </main>
 
-      {/* Evaluation Result */}
       {evaluation && (
         <div className="relative z-10 flex flex-col items-center text-white mt-10 mb-20">
           <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg w-[90%] max-w-2xl text-center">
@@ -182,7 +168,6 @@ export default function SkillUpload() {
         </div>
       )}
 
-      {/* Sidebar */}
       <div
         id="sidebar"
         className="fixed top-0 right-0 h-full w-0 overflow-hidden bg-slate-900/95 shadow-xl transition-all duration-500 ease-in-out z-20 text-white"
