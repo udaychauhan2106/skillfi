@@ -16,12 +16,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Test route
 app.get("/", (req, res) => {
   res.send("🔥 API is running...");
 });
 
-// ✅ Main route for skill hierarchy
 app.post("/api/hierarchy", async (req, res) => {
   const { name, level } = req.body;
 
@@ -63,7 +61,6 @@ app.post("/api/hierarchy", async (req, res) => {
   }
 });
 
-// Get all skills from Firestore
 app.get("/api/skills", async (req, res) => {
   try {
     const snapshot = await db.collection("skills").get();
@@ -75,7 +72,6 @@ app.get("/api/skills", async (req, res) => {
   }
 });
 
-// Get a single skill by ID
 app.get("/api/skills/:id", async (req, res) => {
   try {
     const skillId = req.params.id;
@@ -93,7 +89,6 @@ app.get("/api/skills/:id", async (req, res) => {
   }
 });
 
-// Get a skill by name
 app.get("/api/skills/by-name/:name", async (req, res) => {
   try {
     const skillName = req.params.name;
