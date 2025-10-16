@@ -2,15 +2,13 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
-// 🔹 Import all pages
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import SkillUpload from "./pages/SkillUpload";
 import TestRules from "./pages/TestRules";
 import TestPage1 from "./pages/TestPage1";
-import ScorePage from "./pages/ScorePage"; // ✅ NEW PAGE ADDED
+import ScorePage from "./pages/ScorePage";
 
-// 🔹 Wrapper for route transitions
 function AnimatedPage({ children }) {
   return (
     <motion.div
@@ -24,7 +22,6 @@ function AnimatedPage({ children }) {
   );
 }
 
-// 🔹 Animated route manager
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -72,7 +69,6 @@ function AnimatedRoutes() {
           }
         />
 
-        {/* ✅ New Score Page Route */}
         <Route
           path="/score"
           element={
@@ -86,7 +82,6 @@ function AnimatedRoutes() {
   );
 }
 
-// 🔹 Main App Wrapper
 export default function App() {
   return (
     <Router>
