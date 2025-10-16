@@ -1,4 +1,3 @@
-// models/ProctorLog.js
 import mongoose from "mongoose";
 
 const ProctorLogSchema = new mongoose.Schema({
@@ -6,9 +5,9 @@ const ProctorLogSchema = new mongoose.Schema({
   sessionId: { type: String, required: true },
   events: [
     {
-      type: { type: String, required: true }, // gazeAway, tabSwitch, copyPaste, multiFace, voiceMismatch
+      type: { type: String, required: true }, 
       timestamp: { type: Date, default: Date.now },
-      severity: { type: Number, default: 1 }, // weight of penalty
+      severity: { type: Number, default: 1 }, 
     },
   ],
 });
