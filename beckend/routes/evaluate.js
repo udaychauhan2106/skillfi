@@ -1,4 +1,3 @@
-// routes/evaluate.js
 import express from "express";
 import multer from "multer";
 import fs from "fs";
@@ -9,12 +8,8 @@ import Question from "../models/Question.js";
 
 const router = express.Router();
 
-// Temporary upload folder
 const upload = multer({ dest: "uploads/" });
 
-/* -------------------------------------------------------------------------- */
-/* ✅ 1. Generate and Save a Question                                         */
-/* -------------------------------------------------------------------------- */
 router.post("/generate", async (req, res) => {
   const { skill, level } = req.body;
 
@@ -39,9 +34,7 @@ router.post("/generate", async (req, res) => {
   }
 });
 
-/* -------------------------------------------------------------------------- */
-/* ✅ 2. Text-based Evaluation (existing endpoint)                            */
-/* -------------------------------------------------------------------------- */
+
 router.post("/evaluate", async (req, res) => {
   const { skill, question, answer } = req.body;
 
@@ -59,9 +52,6 @@ router.post("/evaluate", async (req, res) => {
   }
 });
 
-/* -------------------------------------------------------------------------- */
-/* ✅ 3. Video-based Evaluation (NEW for TestPage1.js)                        */
-/* -------------------------------------------------------------------------- */
 router.post("/video", upload.single("video"), async (req, res) => {
   try {
     const { skill, question } = req.body;
@@ -76,10 +66,8 @@ router.post("/video", upload.single("video"), async (req, res) => {
     console.log(`📹 Received video for skill: ${skill}`);
     console.log("📁 File path:", filePath);
 
-    // Call AI evaluator
     const aiResult = await evaluateSkill(skill, question, filePath);
 
-    // Clean up temp file
     fs.unlink(filePath, (err) => {
       if (err) console.warn("⚠️ Failed to delete temp file:", err);
     });
@@ -97,9 +85,7 @@ router.post("/video", upload.single("video"), async (req, res) => {
   }
 });
 
-/* -------------------------------------------------------------------------- */
-/* ✅ 4. Get All Saved Questions                                              */
-/* -------------------------------------------------------------------------- */
+
 router.get("/all", async (req, res) => {
   try {
     const questions = await Question.find().sort({ createdAt: -1 });
