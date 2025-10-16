@@ -1,7 +1,6 @@
 import express from "express";
 const router = express.Router();
 
-// Mock: generate 5 questions for a given skill
 router.post("/", (req, res) => {
   const { skill } = req.body;
   if (!skill) return res.status(400).json({ error: "Skill required" });
