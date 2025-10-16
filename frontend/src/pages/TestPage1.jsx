@@ -18,9 +18,7 @@ const TestPage1 = () => {
 
   const webcamRef = useRef(null);
 
-  // ===========================
-  // 📸 Recording Setup
-  // ===========================
+
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -70,9 +68,6 @@ const TestPage1 = () => {
     }
   };
 
-  // ===========================
-  // 📘 Fetch Questions
-  // ===========================
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
@@ -86,9 +81,7 @@ const TestPage1 = () => {
     fetchQuestions();
   }, [skillId]);
 
-  // ===========================
-  // 🚫 Tab Switch Detection
-  // ===========================
+
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
@@ -106,14 +99,10 @@ const TestPage1 = () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
-  // ===========================
-  // ⚠️ Handle Proctor Violations
-  // ===========================
   const handleViolation = (violation) => {
     console.warn("Violation detected:", violation);
     setWarnings((prev) => [...prev, violation.message]);
 
-    // Log violation to backend
     fetch("http://localhost:5000/api/proctor/log", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -125,9 +114,7 @@ const TestPage1 = () => {
     }).catch((err) => console.error("Failed to log violation:", err));
   };
 
-  // ===========================
-  // 🧠 Submit Answer
-  // ===========================
+
   const handleSubmit = async (answer) => {
     const question = questions[currentQuestion];
     try {
@@ -158,26 +145,17 @@ const TestPage1 = () => {
     }
   };
 
-  // ===========================
-  // 🚀 Start Test on Mount
-  // ===========================
   useEffect(() => {
     startRecording();
     return () => stopRecording();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ===========================
-  // 🧩 Render
-  // ===========================
   return (
     <div style={{ padding: "20px" }}>
       <h2>Test in Progress</h2>
 
-      {/* 👁️ Proctoring System */}
       <Proctoring onViolation={handleViolation} />
 
-      {/* 🎥 Webcam Feed */}
       <video
         ref={webcamRef}
         width="320"
@@ -187,7 +165,6 @@ const TestPage1 = () => {
         style={{ borderRadius: "10px", marginTop: "10px" }}
       ></video>
 
-      {/* ❓ Question Section */}
       {questions.length > 0 && (
         <div style={{ marginTop: "20px" }}>
           <h3>
@@ -219,14 +196,12 @@ const TestPage1 = () => {
         </div>
       )}
 
-      {/* 🧾 Feedback */}
       {feedback && (
         <p style={{ marginTop: "10px", color: "green" }}>
           Feedback: {feedback}
         </p>
       )}
 
-      {/* ⚠️ Warnings */}
       {warnings.length > 0 && (
         <div style={{ marginTop: "20px" }}>
           <h4>Proctoring Warnings:</h4>
