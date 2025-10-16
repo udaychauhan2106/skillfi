@@ -16,6 +16,8 @@ import videoEvaluateRoutes from "./routes/videoEvaluate.js";
 import uploadRoutes from "./routes/uploadold.js";
 import skillRoutes from "./routes/skills.js";
 import proctorVoiceRoutes from "./routes/proctorVoice.js";
+import proctorRoutes from "./routes/proctor.js";
+
 
 // Socket
 import { initProctorSocket } from "./routes/proctor.js";
@@ -52,7 +54,7 @@ app.use("/api/video", videoEvaluateRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/skills", skillRoutes);
 app.use("/api/proctor/voice", proctorVoiceRoutes);
-
+app.use("/api/proctor", proctorRoutes);
 // ------------------------------
 // Create HTTP server for socket.io
 const server = http.createServer(app);

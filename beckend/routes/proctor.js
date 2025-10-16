@@ -27,4 +27,18 @@ export function initProctorSocket(httpServer) {
 
   return io;
 }
+import express from "express";
+import ProctorLog from "../models/ProctorLog.js";
+const router = express.Router();
+
+router.post("/log", async (req, res) => {
+  try {
+    const log = await ProctorLog.create(req.body);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+export default router;
 

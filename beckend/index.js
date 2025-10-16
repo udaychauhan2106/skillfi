@@ -1,8 +1,11 @@
-const express = require("express");
-const admin = require("firebase-admin");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const serviceAccount = require("./firebase-key.json");
+import express from "express";
+import admin from "firebase-admin";
+import cors from "cors";
+import { readFile } from "fs/promises";
+
+const serviceAccount = JSON.parse(
+  await readFile(new URL("./firebase-key.json", import.meta.url))
+);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -11,7 +14,7 @@ admin.initializeApp({
 const db = admin.firestore();
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 // ✅ Test route
 app.get("/", (req, res) => {
@@ -26,7 +29,6 @@ app.post("/api/hierarchy", async (req, res) => {
     return res.status(400).json({ error: "Skill name is required" });
   }
 
-  // Example structure — you can customize this
   const hierarchy = [
     {
       level: "Foundational",
@@ -43,7 +45,6 @@ app.post("/api/hierarchy", async (req, res) => {
   ];
 
   try {
-    // Store in Firestore
     const docRef = await db.collection("skills").add({
       name,
       level: level || "N/A",
@@ -60,11 +61,6 @@ app.post("/api/hierarchy", async (req, res) => {
     console.error("Error writing to Firestore:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-});
-
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`🔥 Server is running on http://localhost:${PORT}`);
 });
 
 // Get all skills from Firestore
@@ -118,6 +114,7 @@ app.get("/api/skills/by-name/:name", async (req, res) => {
   }
 });
 
-
-
-
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`🔥 Server is running on http://localhost:${PORT}`);
+});
